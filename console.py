@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Console module for HolbertonBnB command interpreter."""
+
 import cmd
 from models import storage
 from models.base_model import BaseModel 
