@@ -30,7 +30,6 @@ class FileStorage:
         objdict = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
         with open(FileStorage.__file_path, "w") as f:
             json.dump(objdict, f)
-        print("OK") # If saved successfully
 
     def reload(self):
         """Deserialize JSON file to __objects if file exists"""
@@ -48,11 +47,8 @@ class FileStorage:
                 }
                 for k, v in objdict.items():
                     cls_name = v["__class__"]
-                    del v["__class__"]
-                    # Only BaseModel supported for now
-                    if cls_name == "BaseModel":
-                        self.new(BaseModel(**v))
-            print("OK") # If reload succeeded
+                    if cls_name in classes:
+                        self.new(classes{cls_name}(**v))
         except FileNotFoundError:
             pass
 
