@@ -3,10 +3,6 @@
 from models.base_model import BaseModel
 import unittest
 from datetime import datetime
-import uuid
-import json
-import os
-
 
 class TestBaseModel(unittest.TestCase):
     """ contains tests for BaseModel class """
