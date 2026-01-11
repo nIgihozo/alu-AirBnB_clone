@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-"""This is a console file for the user to access the AirBnB clone"""
-
 import cmd
 from models import storage
 from models.base_model import BaseModel 
