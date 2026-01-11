@@ -3,7 +3,12 @@
 
 import json
 from models.base_model import BaseModel
-
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 class FileStorage:
     """Storage engine for AirBnB clone project"""
@@ -31,6 +36,15 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as f:
                 objdict = json.load(f)
+                classes = {
+                    "BaseModel": BaseModel, 
+                    "User": User,
+                    "Place": Place, 
+                    "State": State, 
+                    "City": City, 
+                    "Amenity": Amenity, 
+                    "Review": Review
+                }
                 for k, v in objdict.items():
                     cls_name = v["__class__"]
                     del v["__class__"]
