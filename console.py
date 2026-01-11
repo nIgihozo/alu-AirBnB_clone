@@ -11,6 +11,16 @@ from models.city import City
 from models.amenity import Amenity 
 from models.review import Review
 
+classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Place": Place,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Review": Review
+        }
+
 class HBNBCommand(cmd.Cmd):
     """Defines the HolbertonBnB command interpreter."""
     prompt = '(hbnb) '
@@ -39,15 +49,6 @@ class HBNBCommand(cmd.Cmd):
         
     def do_create(self, arg):
         """Create a new instance of BaseModel, saves it (to the JSON file) and prints the id."""
-        classes = {
-            "BaseModel": BaseModel,
-            "User": User,
-            "Place": Place,
-            "State": State,
-            "City": City,
-            "Amenity": Amenity,
-            "Review": Review
-        }
 
         if not arg:
             print("** class name missing **")
@@ -63,31 +64,41 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Prints the string representation of an instance based on the class name and id."""
         args = arg.split()
-        if len(args) < 2:
-            print("** class name or id missing **")
-            return
-        class_name, instance_id = args[0], args[1]
-        all_objects = storage.all()
-        key = f"{class_name}.{instance_id}"
-        if key in all_objects:
-            print(all_objects[key])
-        else:
-            print("** no instance found **")
+        if len(args) == 0: 
+            print("** class name missing **") 
+            return 
+        if args[0] not in classes: 
+            print("** class doesn't exist **") 
+            return 
+        if len(args) == 1: 
+            print("** instance id missing **") 
+            return 
+        key = f"{args[0]}.{args[1]}" 
+        all_objects = storage.all() 
+        if key not in all_objects: 
+            print("** no instance found **") 
+            return 
+        print(all_objects[key])
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id."""
-        args = arg.split()
-        if len(args) < 2:
-            print("** class name or id missing **")
-            return
-        class_name, instance_id = args[0], args[1]
-        all_objects = storage.all()
-        key = f"{class_name}.{instance_id}"
-        if key in all_objects:
-            del all_objects[key]
-            storage.save()
-        else:
-            print("** no instance found **")
+        args = arg.split() 
+        if len(args) == 0: 
+            print("** class name missing **") 
+            return 
+        if args[0] not in classes: 
+            print("** class doesn't exist **") 
+            return 
+        if len(args) == 1: 
+            print("** instance id missing **") 
+            return 
+        key = f"{args[0]}.{args[1]}" 
+        all_objects = storage.all() 
+        if key not in all_objects: 
+            print("** no instance found **") 
+            return 
+        del all_objects[key] 
+        storage.save()
 
     def do_all(self, arg):
         """Prints all string representation of all instances based or not on the class name."""
@@ -103,8 +114,20 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Updates an instance based on the class name and id by adding or updating attribute."""
         args = arg.split()
-        if len(args) < 4:
-            print("** class name, id, attribute name or value missing **")
+        if len(args) == 0: 
+            print("** class name missing **") 
+            return 
+        if args[0] not in classes: 
+            print("** class doesn't exist **") 
+            return 
+        if len(args) == 1: 
+            print("** instance id missing **") 
+            return 
+        if len(args) == 2:
+            print("** attribute name missing **")
+            return
+        if len(args) == 3:
+            print("** value missing **")
             return
         class_name, instance_id, attr_name, attr_value = args[0], args[1], args[2], args[3]
         all_objects = storage.all()
