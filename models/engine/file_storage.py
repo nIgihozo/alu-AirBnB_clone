@@ -16,13 +16,13 @@ class FileStorage:
     """ This is a storage engine for AirBnB clone project
     Class Methods:
         all: Returns the object
-        new: updates the dictionary id
+        new: Updates the dictionary id
         save: Serializes, or converts Python objects into JSON strings
         reload: Deserializes, or converts JSON strings into Python objects.
     Class Attributes:
-        __file_path (str): The name of the file to save objects to.
-        __objects (dict): A dictionary of instantiated objects.
-        class_dict (dict): A dictionary of all the classes.
+        __file_path : The name of the file to save objects to. This is gonna be (string).
+        __objects : A dictionary of instantiated objects and is gonna be (dict).
+        class_dict : A dictionary of all the classes and also this is gonna be (dict).
     """
     __file_path = 'storage.json'
 
