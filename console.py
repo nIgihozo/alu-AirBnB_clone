@@ -11,19 +11,9 @@ from models.city import City
 from models.amenity import Amenity 
 from models.review import Review
 
-classes = {
-            "BaseModel": BaseModel,
-            "User": User,
-            "Place": Place,
-            "State": State,
-            "City": City,
-            "Amenity": Amenity,
-            "Review": Review
-        }
-
 class HBNBCommand(cmd.Cmd):
     """Defines the HolbertonBnB command interpreter."""
-    prompt = '(hbnb) '
+    prompt = '(hbnb)'
 
 
     def emptyline(self):
@@ -49,6 +39,16 @@ class HBNBCommand(cmd.Cmd):
         
     def do_create(self, arg):
         """Create a new instance of BaseModel, saves it (to the JSON file) and prints the id."""
+        arg = arg.strip()
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Place": Place,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Review": Review
+        }
 
         if not arg:
             print("** class name missing **")
@@ -64,6 +64,16 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Prints the string representation of an instance based on the class name and id."""
         args = arg.split()
+
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Place": Place,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Review": Review
+        }
         if len(args) == 0: 
             print("** class name missing **") 
             return 
@@ -82,7 +92,17 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id."""
-        args = arg.split() 
+        args = arg.split()
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Place": Place,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Review": Review
+        }
+
         if len(args) == 0: 
             print("** class name missing **") 
             return 
@@ -113,6 +133,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id by adding or updating attribute."""
+
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Place": Place,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Review": Review
+        }
         args = arg.split()
         if len(args) == 0: 
             print("** class name missing **") 
