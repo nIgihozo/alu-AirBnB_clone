@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module defines a class to manage file storage for hbnb clone"""
 
+
 import json
 import os
 from models.base_model import BaseModel
@@ -24,6 +25,7 @@ class FileStorage:
         __objects : A dictionary of instantiated objects and is gonna be (dict).
         class_dict : A dictionary of all the classes and also this is gonna be (dict).
     """
+
     __file_path = 'storage.json'
 
     __objects = {}
@@ -40,6 +42,7 @@ class FileStorage:
         """
             Serialize '__objects' to the JSON file '__file_path'
         """
+        
         odict = FileStorage.__objects
         objdict = {obj: odict[obj].to_dict() for obj in odict.keys()}
         with open(FileStorage.__file_path, "w") as f:
