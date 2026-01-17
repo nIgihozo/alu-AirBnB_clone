@@ -6,7 +6,10 @@ import unittest
 
 class TestPlace(unittest.TestCase):
     """Test cases for the Place class"""
+
     def test_everything(self):
+        """Test that a Place instance is created with default attributes"""
+        
         place = Place()
         self.assertIsInstance(place, Place)
         self.assertTrue(hasattr(place, "city_id"))
