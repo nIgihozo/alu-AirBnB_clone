@@ -23,6 +23,7 @@ class TestFileStorage(unittest.TestCase):
         
     def test_all_method(self):
         """Test the all method of FileStorage"""
+
         storage = FileStorage()
         objects = storage.all()
         self.assertIsInstance(objects, dict)
@@ -30,6 +31,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_new_method(self):
         """Test the new method of FileStorage"""
+
         from models.base_model import BaseModel
 
         storage = FileStorage()
@@ -41,6 +43,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save_and_reload_methods(self):
         """Test the save and reload methods of FileStorage"""
+        
         from models.base_model import BaseModel
         import os
 
